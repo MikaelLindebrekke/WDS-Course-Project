@@ -5,10 +5,12 @@ if (process.env.NODE_ENV !== 'production') {
 const express = require('express');
 const app = express();
 const expressLayouts = require('express-ejs-layouts');
+const bodyParser = require('body-parser');
 
 // Defines the routes that should be available on the server. 
 // Imports the index file from the routes folder. 
 const indexRouter = require('./routes/index');
+const authorRouter = require('./routes/authors');
 
 app.set('view engine', 'ejs');
 
@@ -23,6 +25,7 @@ app.use(expressLayouts);
 // Designates where the public files are going to go such as style sheets, javascript, images etc. 
 app.use(express.static('public'));
 
+app.use(bodyParser.urlencoded({limit: '10mb', extended: false}))
 
 // Database
 const mongoose = require('mongoose');
@@ -34,7 +37,7 @@ db.on('error', error => console.error(error));
 db.on('open', () => console.log('Connected to Mongoose'));
 
 app.use('/', indexRouter);
-
+app.use('/authors', authorRouter);
 
 // Starts the server. 
 // First part is for when it is deployed but for development we just use 3000. 
