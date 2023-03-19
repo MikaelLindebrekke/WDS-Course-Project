@@ -44,4 +44,13 @@ router.post('/', async (req, res) => {
     }
 })
 
+// Delete Author route
+router.delete('/', async (req, res) => {
+    try {
+
+    } catch {
+
+    }
+})
+
 module.exports = router;

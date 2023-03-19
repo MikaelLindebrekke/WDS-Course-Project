@@ -11,6 +11,7 @@ const bodyParser = require('body-parser');
 // Imports the index file from the routes folder. 
 const indexRouter = require('./routes/index');
 const authorRouter = require('./routes/authors');
+const bookRouter = require('./routes/books');
 
 app.set('view engine', 'ejs');
 
@@ -25,7 +26,7 @@ app.use(expressLayouts);
 // Designates where the public files are going to go such as style sheets, javascript, images etc. 
 app.use(express.static('public'));
 
-app.use(bodyParser.urlencoded({limit: '10mb', extended: false}))
+app.use(bodyParser.urlencoded({ limit: '10mb', extended: false }))
 
 // Database
 const mongoose = require('mongoose');
@@ -38,6 +39,7 @@ db.on('open', () => console.log('Connected to Mongoose'));
 
 app.use('/', indexRouter);
 app.use('/authors', authorRouter);
+app.use('/books', bookRouter);
 
 // Starts the server. 
 // First part is for when it is deployed but for development we just use 3000. 
