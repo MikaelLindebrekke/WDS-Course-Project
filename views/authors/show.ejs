@@ -5,7 +5,9 @@
 <h2>Books by Author</h2>
 <% if (booksByAuthor.length > 0) { %>
     <% booksByAuthor.forEach(book => { %>
-        <img height="150" width="100" src="<%= book.coverImagePath %>">
+        <a href="/books/<%= book.id %>">
+            <img height="150" width="100" src="<%= book.coverImagePath %>">
+        </a>
     <% }) %>
 <% } else { %>
     <p> No books to show for selected Author.</p>

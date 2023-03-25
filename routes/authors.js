@@ -107,7 +107,7 @@ router.delete('/:id', async (req, res) => {
 
     try {
         author = await Author.findById(req.params.id);
-        const response = await author.deleteOne();
+        await author.deleteOne();
         res.redirect('/authors');
     } catch {
         // This check handles if we try to update an author that does not exist. 
