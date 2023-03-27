@@ -13,6 +13,7 @@ const methodOverride = require('method-override');
 const indexRouter = require('./routes/index');
 const authorRouter = require('./routes/authors');
 const bookRouter = require('./routes/books');
+const demoRouter = require('./routes/demo');
 
 app.set('view engine', 'ejs');
 
@@ -42,6 +43,7 @@ db.on('open', () => console.log('Connected to Mongoose'));
 app.use('/', indexRouter);
 app.use('/authors', authorRouter);
 app.use('/books', bookRouter);
+app.use('/demo', demoRouter);
 
 // Starts the server. 
 // First part is for when it is deployed but for development we just use 3000. 
